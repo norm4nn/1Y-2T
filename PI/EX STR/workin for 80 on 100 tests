@@ -64,6 +64,9 @@ void wc(int *nl, int *nw, int *nc){
         last0 = inputINT;
         inputINT = getchar();
     }
+    *nl -= 1;
+    *nc -= 1;
+    *nw -= 1;
 }
 
 // count how many times each character from [FIRST_CHAR, LAST_CHAR) occurs
@@ -210,4 +213,3 @@ int main(void) {
     return 0;
 
 }
-
