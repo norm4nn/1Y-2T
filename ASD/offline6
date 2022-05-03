@@ -1,0 +1,58 @@
+#Szymon Mamoń
+#
+
+import queue
+
+from zad6testy import runtests
+
+def longer( G, s, t ):
+    # tu prosze wpisac wlasna implementacje
+    n = len(G)
+    distance = 0
+    L = [-1 for _ in range(n)]
+    visited = [False for _ in range(n)]
+    parents = [[] for _ in range(n)]
+    PQ = queue.PriorityQueue()
+    PQ.put((distance,s))
+    L[0] = 0
+    visited[0] = True
+    while not PQ.empty():
+        tmp_tupl = PQ.get()
+        v = tmp_tupl[1]
+        distance = tmp_tupl[0] + 1
+        for w in G[v]:
+            if not visited[w]:
+                visited[w] = True
+                L[w] = distance
+                PQ.put((distance,w))
+                #parents[w].append(v)
+            elif distance - 2 == L[w]:
+                parents[v].append(w)
+
+
+
+    # for i in range(n):
+    #     print(parents[i])
+    if L[t] == -1:
+        return None
+
+    curr = t
+    prev_has_alternative = False
+    while parents[curr]:
+        if len(parents[curr]) == 1:
+            if not prev_has_alternative:
+                return (parents[curr][0],curr)
+            else:
+                prev_has_alternative = False
+                curr = parents[curr][0]
+        else:
+            curr = parents[curr][0]
+            prev_has_alternative = True
+
+    return None
+
+
+    #return (0,0)
+
+# zmien all_tests na True zeby uruchomic wszystkie testy
+runtests( longer, all_tests = True )
