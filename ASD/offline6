@@ -14,8 +14,8 @@ def longer( G, s, t ):
     parents = [[] for _ in range(n)]
     PQ = queue.PriorityQueue()
     PQ.put((distance,s))
-    L[0] = 0
-    visited[0] = True
+    L[s] = 0
+    visited[s] = True
     while not PQ.empty():
         tmp_tupl = PQ.get()
         v = tmp_tupl[1]
