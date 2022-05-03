@@ -1,7 +1,7 @@
 #Szymon Mamoń
 #
 
-import queue
+import collections
 
 from zad6testy import runtests
 
@@ -12,27 +12,24 @@ def longer( G, s, t ):
     L = [-1 for _ in range(n)]
     visited = [False for _ in range(n)]
     parents = [[] for _ in range(n)]
-    PQ = queue.PriorityQueue()
-    PQ.put((distance,s))
+    queue = collections.deque()
+    queue.append((distance,s))
     L[s] = 0
     visited[s] = True
-    while not PQ.empty():
-        tmp_tupl = PQ.get()
+    while queue:
+        tmp_tupl = queue.popleft()
         v = tmp_tupl[1]
         distance = tmp_tupl[0] + 1
         for w in G[v]:
             if not visited[w]:
                 visited[w] = True
                 L[w] = distance
-                PQ.put((distance,w))
-                #parents[w].append(v)
+                queue.append((distance,w))
             elif distance - 2 == L[w]:
                 parents[v].append(w)
 
 
 
-    # for i in range(n):
-    #     print(parents[i])
     if L[t] == -1:
         return None
 
