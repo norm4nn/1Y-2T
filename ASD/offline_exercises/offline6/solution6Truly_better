@@ -1,7 +1,9 @@
 # Szymon Mamoń
 # ALgorytm najpiewr wykonuje BFS od wierzcholka S z dodatkowym zapisywaniem 'rodzicow' (tylko takich z ktorzy są częścią jednej z potencjalnych
 # najkrotszych ścieżek prowadzocych do tego wierzchloka), nastepnie 'naprawia' graf G w taki sposob zeby skladal sie tylko z
-# najkrtszych sciezek z S do T, nasptenie wykonuje algorytm Tarjana (zmodyfikowane DFS) ktory zapisujac
+# najkrtszych sciezek z S do T, nasptenie wykonuje algorytm Tarjana (zmodyfikowane DFS) ktory numeruje kolejnosc odwiedzenia
+# jezeli natrafi na juz odwiedzony wierzcholek o mniejszym numerze niz jego sam, zpaisuje tenże numer
+# jeżeli wierzcholek na ktory natrafi ma  taki sam numer jak on sam, znaczy to że krawedz miedzy nimi jest mostem w tym grafie
 # zlozonosc: O(V+E)
 import collections
 
@@ -79,7 +81,6 @@ def longer( G, s, t ):
     T = []
     Tarjan(G,s,-1,num,1,T)
 
-
     if T:
         return T[0]
     return None
@@ -92,4 +93,4 @@ def longer( G, s, t ):
 runtests( longer, all_tests = True )
 
 #G    = [[1,2],[0,3],[0,4],[1,5],[2,5],[3,4]]
-#print(longer(G,0,5))
+#print(longer(G,0,5)) testy niemiarodajne
