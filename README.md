@@ -4,3 +4,5 @@ First year of studying Computer Science, second term, python and C exercises mai
 AGH University of Science and Technology
 
 Faculty of Computer Science, Electronics and Telecommunications
+
+Link to my SPOJ:  https://pl.spoj.com/users/n0rm4an/
