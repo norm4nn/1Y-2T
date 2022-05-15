@@ -1,5 +1,5 @@
 # 1Y-2T
-First year of my studies, second term, python and C exercises mainly
+First year of studying Computer Science, second term, python and C exercises mainly
 
 AGH University of Science and Technology
 
